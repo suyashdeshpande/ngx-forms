@@ -1,0 +1,10 @@
+<span [formGroup]="form" class="custom-control custom-checkbox">
+  <input type="checkbox"
+         [value]="value"
+         [id]="id"
+         [checked]="checked"
+         [class]="class"
+         (ngModelChange)="change($event)"
+         [formControlName]="controlName">
+  <label [for]="id" *ngIf="label" [class]="labelClass">{{label}}</label>
+</span>

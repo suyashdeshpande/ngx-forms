@@ -1,0 +1,15 @@
+<span [formGroup]="form">
+
+  <span>{{prefix}}</span>
+
+  <input [type]="type"
+         class="form-control"
+         [placeholder]="placeholder"
+         [formControlName]="controlName"
+         (ngModelChange)="change()"
+         [id]="id">
+
+  <span>{{suffix}}</span>
+  <div>{{hint}}</div>
+
+</span>

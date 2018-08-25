@@ -1,0 +1,122 @@
+<form [formGroup]="form" [id]="formId" (submit)="submit()">
+  <div class="row">
+    <ng-template ngFor [ngForOf]="fields" let-field let-i="index" [ngForTrackBy]="trackByFn">
+      <ng-template [ngIf]="field.isVisible !== false">
+        <div class="col-12 {{field?.classNames}}">
+          <div #parent class="form-group">
+            <ng-template [ngIf]="field.label">
+              <label [for]="field.id">{{field.label}}
+                <sup class="text-danger" *ngIf="field?.validators?.required">*</sup>
+              </label>
+            </ng-template>
+
+
+            <ng-container [ngSwitch]="field.type">
+
+
+              <ng-template ngSwitchCase="html">
+                <div>{{field.content}}</div>
+              </ng-template>
+
+
+              <ng-template ngSwitchCase="image">
+                <div>image</div>
+              </ng-template>
+
+
+              <ng-template ngSwitchCase="select" [ngClass]="field.classNames || ''">
+                <ngx-select [placeholder]="field.placeholder || ''" [options]="field.options" [id]="field.id"
+                            [canAdd]="field.canAdd" [prefix]="field.prefix" [suffix]="field.suffix"
+                            [controlName]="field.name" [form]="form"></ngx-select>
+              </ng-template>
+
+
+              <ng-template ngSwitchCase="multiple-select" [ngClass]="field.classNames || ''">
+
+                <ngx-multiple-select [placeholder]="field.placeholder || ''" [options]="field.options"
+                                     [canAdd]="field.canAdd" [controlName]="field.name"
+                                     [id]="field.id" [form]="form"></ngx-multiple-select>
+
+              </ng-template>
+
+
+              <ng-template ngSwitchCase="textarea" [ngClass]="field.classNames || ''">
+
+                <ngx-textarea [placeholder]="field.placeholder" [controlName]="field.name"
+                              [id]="field.id" [form]="form"></ngx-textarea>
+              </ng-template>
+
+
+              <ng-template ngSwitchCase="checkbox" [ngClass]="field.classNames || ''">
+                <ng-template ngFor [ngForOf]="field.options" let-option let-j="index" [formArrayName]="field.name">
+                  <div class="custom-control custom-checkbox">
+
+                    <ngx-checkbox [class]="'custom-control-input'" [value]="option.value" [id]="option.id"
+                                  [controlName]="option.name" [checked]="option.checked"
+                                  [labelClass]="'custom-control-label'"
+                                  [label]="option.label" [form]="form"></ngx-checkbox>
+                  </div>
+                </ng-template>
+              </ng-template>
+
+
+              <ng-template ngSwitchCase="radio" [ngClass]="field.classNames || ''">
+                <ng-template ngFor [ngForOf]="field.options" let-option let-j="index">
+                  <div class="custom-control custom-radio">
+
+                    <input type="radio" class="custom-control-input" [value]="option.value" [id]="option.id"
+                           [formControlName]="field.name">
+                    <label class="custom-control-label" [for]="option.id">{{ option.label }}</label>
+
+                    <!--<ngx-radio [form]="form" [controlName]="field.name" [value]="option.value" [id]="option.id"
+                               [class]="'custom-control-input'" [label]="option.label"
+                               [labelClass]="'custom-control-label'"></ngx-radio>-->
+                  </div>
+                </ng-template>
+              </ng-template>
+
+              <ng-template ngSwitchCase="date" [ngClass]="field.classNames || ''">
+                <ngx-date [dateFormat]="'MMM DD, YYYY'" [form]="form" [controlName]="field.name" [id]="field.id"
+                          [placeholder]="field.placeholder"></ngx-date>
+              </ng-template>
+
+
+              <ng-template ngSwitchCase="time" [ngClass]="field.classNames || ''">
+
+                <ngx-time [timeFormat]="'hh:mm a'" [controlName]="field.name" [id]="field.id"
+                          [placeholder]="field.placeholder" [form]="form"></ngx-time>
+              </ng-template>
+
+              <ng-template ngSwitchCase="password" [ngClass]="field.classNames || ''">
+
+                <ngx-password [form]="form" [controlName]="field.name" [id]="field.id"
+                              [placeholder]="field.placeholder"></ngx-password>
+              </ng-template>
+
+
+              <ng-template ngSwitchDefault [ngClass]="field.classNames || ''">
+                <ngx-input [id]="field.id" [placeholder]="field.placeholder || ''" [type]="field.type"
+                           [controlName]="field.name" [form]="form"></ngx-input>
+              </ng-template>
+
+
+            </ng-container>
+
+
+            <ng-template [ngIf]="field.validators" [ngClass]="field.validators?.class">
+              <ng-template ngFor [ngForOf]="Object.keys(field.validators)" let-key>
+                <div *ngIf="form?.controls[field.name]?.touched &&
+                     form?.controls[field.name]?.errors &&
+                     form?.controls[field.name]?.errors[key]">
+                  {{field?.validators[key]?.message}}
+                </div>
+              </ng-template>
+            </ng-template>
+
+          </div>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+</form>
+

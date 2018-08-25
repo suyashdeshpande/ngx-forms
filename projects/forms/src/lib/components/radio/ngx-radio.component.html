@@ -1,0 +1,9 @@
+<span [formGroup]="form">
+  <input type="radio"
+         [formControlName]="controlName"
+         [id]="id"
+         [value]="value"
+         [class]="class"
+         (ngModelChange)="change($event)">
+  <label [for]="id" [class]="labelClass" *ngIf="label">{{label}}</label>
+</span>

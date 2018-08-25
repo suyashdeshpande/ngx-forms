@@ -1,0 +1,9 @@
+<span [formGroup]="form">
+  <input ngxFlatpickr
+         type="text"
+         [placeholder]="placeholder"
+         [id]="id"
+         [dateFormat]="dateFormat"
+         [formControlName]="controlName"
+         (ngModelChange)="change($event)">
+</span>

@@ -1,0 +1,11 @@
+<span [formGroup]="form">
+  <span>{{prefix}}</span>
+  <ng-select [placeholder]="placeholder || ''" [items]="options" addTagText="Add"
+             [addTag]="canAdd" bindLabel="label" bindValue="value"
+             [multiple]="true"
+             (change)="onSelectEvent($event)" [formControlName]="controlName"
+             [labelForId]="id" [closeOnSelect]="closeOnSelect || 'true'">
+
+  </ng-select>
+  <span>{{suffix}}</span>
+</span>
