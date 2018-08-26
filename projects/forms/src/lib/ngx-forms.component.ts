@@ -132,6 +132,11 @@ export class NgxFormsComponent implements OnChanges {
     return _v;
   }
 
+  static createFormGroup(allFields: FormField[], formId: string) {
+    return new FormGroup((NgxFormsComponent.parseFields(allFields, formId).fg));
+  }
+
+
   ngOnChanges() {
     // console.log('fields', this.fields);
     // const f = NgxFormsComponent.parseFields(this.fields, this.formId);

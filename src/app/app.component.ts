@@ -167,12 +167,15 @@ export class AppComponent {
 
     // console.log('new fields total', [...this.fields, {...this.fields2}[0]]);
 
-    this.myFormGroup = new FormGroup(NgxFormsComponent.parseFields([...this.fields, {...this.fields2}[0]], this.formId).fg);
+    // this.myFormGroup = new FormGroup(NgxFormsComponent.parseFields([...this.fields, {...this.fields2}[0]], this.formId).fg);
+    this.myFormGroup = NgxFormsComponent.createFormGroup([...this.fields, {...this.fields2}[0]], this.formId);
     console.log('my form group', this.myFormGroup);
   }
 
 
   submit() {
+
+    console.log('fields console.log to check 2 way binding', this.fields);
 
     Object.keys(this.myFormGroup.controls).forEach(field => {
       const control = this.myFormGroup.get(field);

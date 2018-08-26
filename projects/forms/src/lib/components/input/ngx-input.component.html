@@ -7,7 +7,8 @@
          [placeholder]="placeholder"
          [formControlName]="controlName"
          (ngModelChange)="change()"
-         [id]="id">
+         [id]="id"
+         [(ngModel)]="value">
 
   <span>{{suffix}}</span>
   <div>{{hint}}</div>
