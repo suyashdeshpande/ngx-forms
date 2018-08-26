@@ -54,7 +54,7 @@
                     <ngx-checkbox [class]="'custom-control-input'" [value]="option.value" [id]="option.id"
                                   [controlName]="option.name" [checked]="option.checked"
                                   [labelClass]="'custom-control-label'"
-                                  [label]="option.label" [form]="form"></ngx-checkbox>
+                                  [label]="option.label" [form]="form"></ngx-checkbox >
                   </div>
                 </ng-template>
               </ng-template>
@@ -105,7 +105,7 @@
 
             <ng-template [ngIf]="field.validators" [ngClass]="field.validators?.class">
               <ng-template ngFor [ngForOf]="Object.keys(field.validators)" let-key>
-                <div *ngIf="form?.controls[field.name]?.touched &&
+                <div style="color: red;" *ngIf="form?.controls[field.name]?.touched &&
                      form?.controls[field.name]?.errors &&
                      form?.controls[field.name]?.errors[key]">
                   {{field?.validators[key]?.message}}
@@ -119,4 +119,3 @@
     </ng-template>
   </div>
 </form>
-

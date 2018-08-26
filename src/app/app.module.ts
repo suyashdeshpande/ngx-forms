@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {NgxFormsModule} from '../../projects/forms/src/lib/ngx-forms.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,9 @@ import {NgxFormsModule} from '../../projects/forms/src/lib/ngx-forms.module';
   ],
   imports: [
     BrowserModule,
-    NgxFormsModule
+    NgxFormsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
