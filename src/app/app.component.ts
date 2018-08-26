@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {NgxFormsComponent} from '../../projects/forms/src/lib/ngx-forms.component';
 
 @Component({
@@ -173,7 +173,14 @@ export class AppComponent {
 
 
   submit() {
-    console.log('submit function executed');
+
+    Object.keys(this.myFormGroup.controls).forEach(field => {
+      const control = this.myFormGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({onlySelf: true});
+      }
+    });
+
     if (this.myFormGroup.valid) {
       console.log('form submitted', this.myFormGroup);
     }
