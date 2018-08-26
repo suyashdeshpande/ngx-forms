@@ -10,6 +10,8 @@ import {NgxFormsComponent} from '../../projects/forms/src/lib/ngx-forms.componen
 export class AppComponent {
   fields: any = [];
   formId = 'form';
+  myFormGroup: FormGroup;
+  fields2: any;
 
   constructor() {
     this.fields = [
@@ -154,13 +156,27 @@ export class AppComponent {
         isVisible: true
       }
     ];
+    this.fields2 = [
+      {
+        name: 'address',
+        label: 'Address',
+        type: 'text',
+        value: 'my address'
+      }
+    ];
 
-    // this.myFormGroup = NgxFormsComponent.parseFields(this.fields, this.formId).fg;
+    // console.log('new fields total', [...this.fields, {...this.fields2}[0]]);
+
+    this.myFormGroup = new FormGroup(NgxFormsComponent.parseFields([...this.fields, {...this.fields2}[0]], this.formId).fg);
+    console.log('my form group', this.myFormGroup);
   }
 
 
-  submit(ev: any) {
-    console.log('submitted', ev);
+  submit() {
+    console.log('submit function executed');
+    if (this.myFormGroup.valid) {
+      console.log('form submitted', this.myFormGroup);
+    }
   }
 
 }

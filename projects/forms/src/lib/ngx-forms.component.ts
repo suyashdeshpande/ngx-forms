@@ -15,13 +15,13 @@ export class NgxFormsComponent implements OnChanges {
   constructor(private _ref: ChangeDetectorRef, public _service: NgxFormsService, private fb: FormBuilder) {
   }
 
-  form: FormGroup;
+  // form: FormGroup;
   Object = Object;
   originalJSON: any;
 
   @Input() fields: FormField[];
   @Input() formId = Math.random().toString(36).substring(7);
-  // @Input() form: FormGroup;
+  @Input() form: FormGroup;
 
   @Output() onSubmit: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Output() formEvents: EventEmitter<any> = new EventEmitter<any>();
@@ -134,9 +134,9 @@ export class NgxFormsComponent implements OnChanges {
 
   ngOnChanges() {
     // console.log('fields', this.fields);
-    const f = NgxFormsComponent.parseFields(this.fields, this.formId);
+    // const f = NgxFormsComponent.parseFields(this.fields, this.formId);
     // console.log('f is', f);
-    this.form = new FormGroup(f.fg);
+    // this.form = new FormGroup(f.fg);
     // console.log('form', this.form);
     this.markForCheck();
 

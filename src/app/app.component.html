@@ -1,2 +1,17 @@
-<ngx-forms (onSubmit)="submit($event)" [formId]="formId" [fields]="fields"></ngx-forms>
+<form [formGroup]="myFormGroup" [id]="formId" (submit)="submit()">
+
+  <mat-tab-group>
+    <mat-tab label="First">
+      <ngx-forms [formId]="formId" [fields]="fields" [form]="myFormGroup"></ngx-forms>
+    </mat-tab>
+
+    <mat-tab label="Second">
+      <ngx-forms [formId]="formId" [fields]="fields2" [form]="myFormGroup"></ngx-forms>
+    </mat-tab>
+
+  </mat-tab-group>
+
+</form>
 <button class="btn btn-primary" type="submit" [attr.form]="formId">Submit</button>
+
+{{myFormGroup.value | json}}

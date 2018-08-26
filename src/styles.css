@@ -1,3 +1,4 @@
 @import '~flatpickr/dist/flatpickr.min.css';
 @import '~timepicker/jquery.timepicker.min.css';
 @import "~@ng-select/ng-select/themes/material.theme.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
