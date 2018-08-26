@@ -1,5 +1,5 @@
 <form [formGroup]="form" [id]="formId" (submit)="submit()">
-  <div class="row">
+  <div class="row" [formGroup]="form">
     <ng-template ngFor [ngForOf]="fields" let-field let-i="index" [ngForTrackBy]="trackByFn">
       <ng-template [ngIf]="field.isVisible !== false">
         <div class="col-12 {{field?.classNames}}">
@@ -95,6 +95,7 @@
 
 
               <ng-template ngSwitchDefault [ngClass]="field.classNames || ''">
+
                 <ngx-input [id]="field.id" [placeholder]="field.placeholder || ''" [type]="field.type"
                            [controlName]="field.name" [form]="form"></ngx-input>
               </ng-template>

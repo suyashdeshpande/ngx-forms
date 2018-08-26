@@ -42,7 +42,19 @@ import {NgxPasswordToggleModule} from 'ngx-password-toggle';
     NgxTimeComponent,
     NgxPasswordComponent
   ],
-  exports: [NgxFormsComponent]
+  exports: [
+    NgxFormsComponent,
+    NgxFormsComponent,
+    NgxInputComponent,
+    NgxSelectComponent,
+    NgxMultipleSelectComponent,
+    NgxTextAreaComponent,
+    NgxCheckboxComponent,
+    NgxRadioComponent,
+    NgxDateComponent,
+    NgxTimeComponent,
+    NgxPasswordComponent
+  ]
 })
 export class NgxFormsModule {
 }

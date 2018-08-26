@@ -21,6 +21,7 @@ export class NgxFormsComponent implements OnChanges {
 
   @Input() fields: FormField[];
   @Input() formId = Math.random().toString(36).substring(7);
+  // @Input() form: FormGroup;
 
   @Output() onSubmit: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Output() formEvents: EventEmitter<any> = new EventEmitter<any>();
