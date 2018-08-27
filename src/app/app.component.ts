@@ -73,6 +73,22 @@ export class AppComponent {
         }
       },
       {
+        name: 'confirmPassword',
+        label: 'Confirm Password',
+        type: 'password',
+        placeholder: 'Retype Password',
+        value: '',
+        isVisible: true,
+        validators: {
+          required: {
+            message: 'Confirm Password required'
+          },
+          equalTo: {
+            message: 'Password doesnot match'
+          }
+        }
+      },
+      {
         name: 'location multiple',
         label: 'Location multiple',
         type: 'multiple-select',

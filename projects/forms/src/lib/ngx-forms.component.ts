@@ -49,13 +49,21 @@ export class NgxFormsComponent implements OnChanges {
             return option;
           });
         }
-        if (field.name) {
+        if (field.name !== 'confirmPassword') {
           _fg = {
             ..._fg,
             [field.name]: new FormControl({
               value: field.value,
               disabled: field.disabled
             }, NgxFormsComponent.parseValidators(field.validators))
+          };
+        } else {
+          _fg = {
+            ..._fg,
+            [field.name]: new FormControl({
+              value: field.value,
+              disabled: field.disabled
+            }, NgxFormsComponent.parseValidators(field.validators, _fg))
           };
         }
         return field;
@@ -66,12 +74,17 @@ export class NgxFormsComponent implements OnChanges {
     };
   }
 
-  static parseValidators(validators: FormValidators) {
+  static parseValidators(validators: FormValidators, fg?: any) {
+    // if (fg !== undefined) {
+    //   console.log('fg in parse validators', fg);
+    //   console.log('password form control', fg['password']);
+    // }
     let _v: any = [];
     for (const v in validators) {
       if (!validators.hasOwnProperty(v)) {
         continue;
       }
+      // console.log('validators', validators);
       switch (v) {
         case 'minlength':
           _v = [..._v, Validators.minLength(validators[v].value)];
@@ -127,6 +140,8 @@ export class NgxFormsComponent implements OnChanges {
         case 'notEqual':
           _v = [..._v, CustomValidators.notEqual(validators[v].value)];
           break;
+        case 'equalTo':
+          _v = [..._v, CustomValidators.equalTo(fg['password'])];
       }
     }
     return _v;

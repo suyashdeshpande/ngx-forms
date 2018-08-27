@@ -122,7 +122,7 @@
         }
       }
     },
-    "forms": {
+    "ngx-forms": {
       "root": "projects/forms",
       "sourceRoot": "projects/forms/src",
       "projectType": "library",
