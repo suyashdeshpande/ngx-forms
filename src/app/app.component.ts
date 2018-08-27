@@ -84,6 +84,7 @@ export class AppComponent {
             message: 'Confirm Password required'
           },
           equalTo: {
+            value: 'password',
             message: 'Password doesnot match'
           }
         }

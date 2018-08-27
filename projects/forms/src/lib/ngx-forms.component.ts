@@ -141,7 +141,7 @@ export class NgxFormsComponent implements OnChanges {
           _v = [..._v, CustomValidators.notEqual(validators[v].value)];
           break;
         case 'equalTo':
-          _v = [..._v, CustomValidators.equalTo(fg['password'])];
+          _v = [..._v, CustomValidators.equalTo(fg[validators[v].value])];
       }
     }
     return _v;
