@@ -3,5 +3,7 @@
             [placeholder]="placeholder"
             [id]="id"
             [formControlName]="controlName"
-            (ngModelChange)="change()"></textarea>
+            [(ngModel)]="value"
+            (ngModelChange)="change()"
+            ></textarea>
 </span>

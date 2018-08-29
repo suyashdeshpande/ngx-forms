@@ -137,6 +137,7 @@ export class AppComponent {
         type: 'checkbox',
         label: 'Alphabets',
         name: 'alphabets',
+        value: '',
         options: [
           {
             id: 1,
@@ -156,6 +157,7 @@ export class AppComponent {
         type: 'radio',
         label: 'Gender',
         name: 'gender',
+        value: '',
         options: [
           {
             id: 3,

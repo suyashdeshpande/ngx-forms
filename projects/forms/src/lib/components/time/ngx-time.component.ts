@@ -21,4 +21,7 @@ export class NgxTimeComponent implements OnInit {
 
   ngOnInit() {
   }
+  change(ev: any) {
+    this.changeEmit.emit(ev);
+  }
 }

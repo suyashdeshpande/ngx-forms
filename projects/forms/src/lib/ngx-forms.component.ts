@@ -208,5 +208,15 @@ export class NgxFormsComponent implements OnChanges {
     return i;
   }
 
+  valueChanged(ev: any, field: FormField) {
+    if (field.type === 'date' || field.type === 'time') {
+      field.value = ev._i;
+    } else {
+      field.value = ev;
+    }
+    // console.log('value changed', controlName, ev);
+    // console.log('field is', field);
+    console.log('all fields', this.fields);
+  }
 
 }

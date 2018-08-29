@@ -12,6 +12,7 @@ export class NgxTextAreaComponent implements OnInit {
   @Input() controlName: string;
   @Input() id: string;
   @Input() form: FormGroup;
+  @Input() value: string;
 
   @Output() changeEmit: EventEmitter<any> = new EventEmitter<any>();
 
@@ -21,7 +22,7 @@ export class NgxTextAreaComponent implements OnInit {
   ngOnInit() {
   }
 
-  change() {
-    this.changeEmit.emit();
+  change(ev: any) {
+    this.changeEmit.emit(this.value);
   }
 }
