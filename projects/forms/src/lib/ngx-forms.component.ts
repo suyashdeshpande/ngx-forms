@@ -1,5 +1,5 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnChanges, Output} from '@angular/core';
+import {ControlValueAccessor, FormBuilder, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {NgxFormsService} from './ngx-forms.service';
 import {FormField, FormFieldOption, FormValidators} from './interface/interface';
 import {CustomValidators} from 'ngx-custom-validators';
@@ -8,9 +8,15 @@ import {CustomValidators} from 'ngx-custom-validators';
   selector: 'ngx-forms',
   templateUrl: 'ngx-forms.component.html',
   styleUrls: ['ngx-forms.component.css'],
-  providers: []
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => NgxFormsComponent)
+    }
+  ]
 })
-export class NgxFormsComponent implements OnChanges {
+export class NgxFormsComponent implements OnChanges, ControlValueAccessor {
 
   constructor(private _ref: ChangeDetectorRef, public _service: NgxFormsService, private fb: FormBuilder) {
   }
@@ -25,6 +31,7 @@ export class NgxFormsComponent implements OnChanges {
 
   @Output() onSubmit: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
   @Output() formEvents: EventEmitter<any> = new EventEmitter<any>();
+  @Output() fieldsChanged: EventEmitter<any> = new EventEmitter<any>();
 
 
   static parseFields(fields: FormField[], formId: string) {
@@ -216,7 +223,28 @@ export class NgxFormsComponent implements OnChanges {
     }
     // console.log('value changed', controlName, ev);
     // console.log('field is', field);
-    console.log('all fields', this.fields);
+    this.propChange(this.fields);
+    this.fieldsChanged.emit(this.fields);
+    // console.log('all fields', this.fields);
   }
+
+  registerOnChange(fn: any): void {
+  }
+
+  registerOnTouched(fn: any): void {
+    this.propChange = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+  }
+
+  writeValue(obj: any): void {
+    if (obj !== undefined) {
+      this.fields = obj;
+    }
+  }
+
+  propChange = (_: any) => {
+  };
 
 }

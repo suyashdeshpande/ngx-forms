@@ -208,4 +208,9 @@ export class AppComponent {
     }
   }
 
+  fieldsChanged(ev: any) {
+    this.fields = [...ev];
+    console.log('fields changed', ev);
+  }
+
 }

@@ -2,7 +2,7 @@
 
   <mat-tab-group>
     <mat-tab label="First">
-      <ngx-forms [formId]="formId" [fields]="fields" [form]="myFormGroup"></ngx-forms>
+      <ngx-forms [formId]="formId" [fields]="fields" [form]="myFormGroup" (fieldsChanged)="fieldsChanged($event)"></ngx-forms>
     </mat-tab>
 
     <mat-tab label="Second">
