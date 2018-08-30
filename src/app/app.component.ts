@@ -12,6 +12,7 @@ export class AppComponent {
   formId = 'form';
   myFormGroup: FormGroup;
   fields2: any;
+  temp = 'asdajksdh';
 
   constructor() {
     this.fields = [
@@ -209,8 +210,14 @@ export class AppComponent {
   }
 
   fieldsChanged(ev: any) {
-    this.fields = [...ev];
-    console.log('fields changed', ev);
+    console.log('app component field changed', this.fields);
+    // this.fields = [...ev];
+    // console.log('fields changed', ev);
+  }
+
+  inputChanged(ev: any, f: any) {
+    console.log('event', f.value);
+    console.log('form', f);
   }
 
 }

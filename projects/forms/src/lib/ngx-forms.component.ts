@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnChanges, Output} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {ControlValueAccessor, FormBuilder, FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {NgxFormsService} from './ngx-forms.service';
 import {FormField, FormFieldOption, FormValidators} from './interface/interface';
@@ -16,14 +16,12 @@ import {CustomValidators} from 'ngx-custom-validators';
     }
   ]
 })
-export class NgxFormsComponent implements OnChanges, ControlValueAccessor {
+export class NgxFormsComponent implements OnChanges, ControlValueAccessor, OnInit {
 
   constructor(private _ref: ChangeDetectorRef, public _service: NgxFormsService, private fb: FormBuilder) {
   }
-
   // form: FormGroup;
   Object = Object;
-  originalJSON: any;
 
   @Input() fields: FormField[];
   @Input() formId = Math.random().toString(36).substring(7);
@@ -158,6 +156,8 @@ export class NgxFormsComponent implements OnChanges, ControlValueAccessor {
     return new FormGroup((NgxFormsComponent.parseFields(allFields, formId).fg));
   }
 
+ngOnInit() {
+}
 
   ngOnChanges() {
     // console.log('fields', this.fields);
@@ -224,8 +224,9 @@ export class NgxFormsComponent implements OnChanges, ControlValueAccessor {
     // console.log('value changed', controlName, ev);
     // console.log('field is', field);
     this.propChange(this.fields);
+    // this.fieldsChanged.emit(this.fields);
     this.fieldsChanged.emit(this.fields);
-    // console.log('all fields', this.fields);
+    console.log('all fields', this.fields);
   }
 
   registerOnChange(fn: any): void {
@@ -245,6 +246,5 @@ export class NgxFormsComponent implements OnChanges, ControlValueAccessor {
   }
 
   propChange = (_: any) => {
-  };
-
+  }
 }

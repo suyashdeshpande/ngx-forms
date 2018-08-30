@@ -2,11 +2,12 @@
 
   <mat-tab-group>
     <mat-tab label="First">
-      <ngx-forms [formId]="formId" [fields]="fields" [form]="myFormGroup" (fieldsChanged)="fieldsChanged($event)"></ngx-forms>
+      <ngx-forms [formId]="formId" [(ngModel)]="fields" [ngModelOptions]="{standalone: true}" [form]="myFormGroup"
+                 (fieldsChanged)="fieldsChanged($event)"></ngx-forms>
     </mat-tab>
 
     <mat-tab label="Second">
-      <ngx-forms [formId]="formId" [fields]="fields2" [form]="myFormGroup"></ngx-forms>
+      <ngx-forms [formId]="formId" [(ngModel)]="fields2" [ngModelOptions]="{standalone: true}" [form]="myFormGroup"></ngx-forms>
     </mat-tab>
 
   </mat-tab-group>
@@ -16,3 +17,4 @@
 <button class="btn btn-primary" type="submit" [attr.form]="formId">Submit</button>
 
 {{myFormGroup.value | json}}
+
