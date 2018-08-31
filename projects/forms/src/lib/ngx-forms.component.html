@@ -97,8 +97,8 @@
             <ng-template ngSwitchDefault [ngClass]="field.classNames || ''">
 
               <ngx-input [id]="field.id" [placeholder]="field.placeholder || ''" [type]="field.type"
-                         [controlName]="field.name" [form]="form" [value]="field.value"
-                         (changeEmit)="valueChanged($event, field)"></ngx-input>
+                         [controlName]="field.name" [form]="form" [(ngModel)]="field.value" [ngModelOptions]="{standalone: true}"
+                         ></ngx-input>
             </ng-template>
 
 

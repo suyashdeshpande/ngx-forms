@@ -1,16 +1,15 @@
-<!--<div [formGroup]="form">-->
+<div [formGroup]="form">
 
   <span>{{prefix}}</span>
 
   <input [type]="type"
          class="form-control"
          [placeholder]="placeholder"
-         [name]="controlName"
-         (ngModelChange)="change()"
-         [id]="id"
-         [(ngModel)]="value">
+         [formControlName]="controlName"
+         (input)="change($event)"
+         [id]="id">
 
   <span>{{suffix}}</span>
   <div>{{hint}}</div>
 
-<!--</div>-->
+</div>

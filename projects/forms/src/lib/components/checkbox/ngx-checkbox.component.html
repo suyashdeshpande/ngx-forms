@@ -4,7 +4,7 @@
          [id]="id"
          [checked]="checked"
          [class]="class"
-         (ngModelChange)="change($event)"
+         (input)="change($event)"
          [formControlName]="controlName">
   <label [for]="id" *ngIf="label" [class]="labelClass">{{label}}</label>
 </span>

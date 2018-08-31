@@ -33,10 +33,10 @@ export class NgxInputComponent implements OnChanges, ControlValueAccessor {
   ngOnChanges() {
   }
 
-  change() {
-    this.changeEmit.emit(this.value);
+  change(ev: any) {
+    this.changeEmit.emit(ev);
     // console.log('inp value', this.value);
-    this.valueChanged(this.value);
+    this.valueChanged(ev);
   }
 
   registerOnChange(fn: any): void {
