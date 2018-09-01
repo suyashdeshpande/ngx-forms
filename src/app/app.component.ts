@@ -117,7 +117,6 @@ export class AppComponent {
         type: 'select',
         isVisible: true,
         value: '',
-        // options: ['Bhopal', 'Indore', 'Delhi'],
         options: [
           {
             id: 10,

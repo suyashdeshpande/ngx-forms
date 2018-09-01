@@ -26,6 +26,7 @@ export class NgxCheckboxComponent implements OnInit {
   }
 
   change(ev: any) {
+    console.log('checkbox changed', ev);
     this.changeEmit.emit(ev);
   }
 }

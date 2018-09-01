@@ -25,17 +25,21 @@
 
 
             <ng-template ngSwitchCase="select" [ngClass]="field.classNames || ''">
+
               <ngx-select [placeholder]="field.placeholder || ''" [options]="field.options" [id]="field.id"
                           [canAdd]="field.canAdd" [prefix]="field.prefix" [suffix]="field.suffix"
-                          [controlName]="field.name" [form]="form" (selectChange)="valueChanged($event, field)"></ngx-select>
+                          [controlName]="field.name" [form]="form" [(ngModel)]="field.value"
+                          [ngModelOptions]="{standalone: true}"></ngx-select>
+
             </ng-template>
 
 
             <ng-template ngSwitchCase="multiple-select" [ngClass]="field.classNames || ''">
 
               <ngx-multiple-select [placeholder]="field.placeholder || ''" [options]="field.options"
-                                   [canAdd]="field.canAdd" [controlName]="field.name"
-                                   [id]="field.id" [form]="form" (selectChange)="valueChanged($event, field)"></ngx-multiple-select>
+                                   [canAdd]="field.canAdd" [controlName]="field.name" [(ngModel)]="field.value"
+                                   [ngModelOptions]="{standalone: true}" [id]="field.id" [form]="form"
+                                   ></ngx-multiple-select>
 
             </ng-template>
 
@@ -43,7 +47,8 @@
             <ng-template ngSwitchCase="textarea" [ngClass]="field.classNames || ''">
 
               <ngx-textarea [placeholder]="field.placeholder" [controlName]="field.name"
-                            [id]="field.id" [form]="form" (changeEmit)="valueChanged($event, field)" [value]="field.value"></ngx-textarea>
+                            [id]="field.id" [form]="form"
+                            [(ngModel)]="field.value" [ngModelOptions]="{standalone: true}"></ngx-textarea>
             </ng-template>
 
 
@@ -83,14 +88,15 @@
 
             <ng-template ngSwitchCase="time" [ngClass]="field.classNames || ''">
 
-              <ngx-time [timeFormat]="'hh:mm a'" [controlName]="field.name" [id]="field.id"
-                        [placeholder]="field.placeholder" [form]="form" (changeEmit)="valueChanged($event, field)"></ngx-time>
+              <ngx-time [timeFormat]="'hh:mm a'" [controlName]="field.name" [id]="field.id" [(ngModel)]="field.value"
+                        [placeholder]="field.placeholder" [form]="form" [ngModelOptions]="{standalone: true}"></ngx-time>
             </ng-template>
 
             <ng-template ngSwitchCase="password" [ngClass]="field.classNames || ''">
 
-              <ngx-password [form]="form" [controlName]="field.name" [id]="field.id"
-                            [placeholder]="field.placeholder" (changeEmit)="valueChanged($event, field)"></ngx-password>
+              <ngx-password [form]="form" [controlName]="field.name" [id]="field.id" [(ngModel)]="field.value"
+                            [ngModelOptions]="{standalone: true}"
+                            [placeholder]="field.placeholder"></ngx-password>
             </ng-template>
 
 

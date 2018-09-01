@@ -257,5 +257,4 @@ ngOnInit() {
 
   propChange = (_: any) => {
   }
-
 }
