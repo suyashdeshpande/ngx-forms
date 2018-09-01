@@ -4,6 +4,6 @@
             [id]="id"
             [formControlName]="controlName"
             [(ngModel)]="value"
-            (input)="change()"
+            (input)="change($event.target.value)"
             ></textarea>
 </span>

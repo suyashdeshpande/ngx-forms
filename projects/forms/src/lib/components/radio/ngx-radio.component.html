@@ -4,6 +4,6 @@
          [id]="id"
          [value]="value"
          [class]="class"
-         (input)="change($event)">
+         (input)="change($event.target.value)">
   <label [for]="id" [class]="labelClass" *ngIf="label">{{label}}</label>
 </span>

@@ -23,6 +23,6 @@ export class NgxTextAreaComponent implements OnInit {
   }
 
   change(ev: any) {
-    this.changeEmit.emit(this.value);
+    this.changeEmit.emit(ev);
   }
 }

@@ -23,6 +23,7 @@ export class NgxDateComponent implements OnInit {
   }
 
   change(ev: any) {
-    this.changeEmit.emit(ev);
+    console.log('date changed event', ev);
+    this.changeEmit.emit(ev.target.value);
   }
 }

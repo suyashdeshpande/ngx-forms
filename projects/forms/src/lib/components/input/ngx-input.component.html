@@ -6,7 +6,7 @@
          class="form-control"
          [placeholder]="placeholder"
          [formControlName]="controlName"
-         (input)="change($event)"
+         (input)="change($event.target.value)"
          [id]="id">
 
   <span>{{suffix}}</span>
