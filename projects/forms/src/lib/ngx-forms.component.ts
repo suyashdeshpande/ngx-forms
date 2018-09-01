@@ -41,9 +41,9 @@ export class NgxFormsComponent implements OnChanges, ControlValueAccessor, OnIni
       .map((field: FormField, i: number) => {
         // console.log('map function parse fields', i, field);
         field.id = formId + '-' + i;
-        if (field.type === 'image') {
-          return;
-        }
+        // if (field.type === 'image') {
+        //   return;
+        // }
         if (field.options && (field.type !== 'select' && field.type !== 'multiple-select') && field.type === 'checkbox') {
           field.options = field.options.map((option: FormFieldOption, j: number) => {
             option.id = option.id || (formId + '-' + i + '-' + j);

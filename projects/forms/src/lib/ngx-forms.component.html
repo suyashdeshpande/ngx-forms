@@ -19,8 +19,9 @@
             </ng-template>
 
 
-            <ng-template ngSwitchCase="image">
-              <div>image</div>
+            <ng-template ngSwitchCase="image" [ngClass]="field.classNames || ''">
+              <ngx-upload [config]="{ crop: [ { ratio: 1.5, viewMode: 0 } ], quality: 0.8 , url: '/dummyUrl'}"
+              [formControlName]="field.name"></ngx-upload>
             </ng-template>
 
 

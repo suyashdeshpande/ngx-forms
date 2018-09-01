@@ -19,6 +19,8 @@ import {
   NgxPasswordComponent,
 } from './components';
 import {NgxPasswordToggleModule} from 'ngx-password-toggle';
+import {NgxUploadComponent} from './components/image/uploader/ngx-upload.component';
+import {NgxCropComponent} from './components/image/cropper/ngx-crop.component';
 
 @NgModule({
   imports: [
@@ -42,7 +44,10 @@ import {NgxPasswordToggleModule} from 'ngx-password-toggle';
     NgxRadioComponent,
     NgxDateComponent,
     NgxTimeComponent,
-    NgxPasswordComponent
+    NgxPasswordComponent,
+
+    NgxUploadComponent,
+    NgxCropComponent
   ],
   exports: [
     NgxFormsComponent,
@@ -55,7 +60,10 @@ import {NgxPasswordToggleModule} from 'ngx-password-toggle';
     NgxRadioComponent,
     NgxDateComponent,
     NgxTimeComponent,
-    NgxPasswordComponent
+    NgxPasswordComponent,
+
+    NgxUploadComponent,
+    NgxCropComponent
   ]
 })
 export class NgxFormsModule {
