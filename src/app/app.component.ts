@@ -12,7 +12,6 @@ export class AppComponent {
   formId = 'form';
   myFormGroup: FormGroup;
   fields2: any;
-  temp = 'asdajksdh';
 
   constructor() {
     this.fields = [
@@ -184,10 +183,8 @@ export class AppComponent {
         value: 'my address'
       }
     ];
+    NgxFormsComponent.generateFieldsFromArray(['name', 'email']);
 
-    // console.log('new fields total', [...this.fields, {...this.fields2}[0]]);
-
-    // this.myFormGroup = new FormGroup(NgxFormsComponent.parseFields([...this.fields, {...this.fields2}[0]], this.formId).fg);
     this.myFormGroup = NgxFormsComponent.createFormGroup([...this.fields, {...this.fields2}[0]], this.formId);
     console.log('my form group', this.myFormGroup);
   }

@@ -3,6 +3,7 @@ import {ControlValueAccessor, FormBuilder, FormControl, FormGroup, NG_VALUE_ACCE
 import {NgxFormsService} from './ngx-forms.service';
 import {FormField, FormFieldOption, FormValidators} from './interface/interface';
 import {CustomValidators} from 'ngx-custom-validators';
+import {generateFields} from './generate-field-from-array.component';
 
 @Component({
   selector: 'ngx-forms',
@@ -156,6 +157,15 @@ export class NgxFormsComponent implements OnChanges, ControlValueAccessor, OnIni
     return new FormGroup((NgxFormsComponent.parseFields(allFields, formId).fg));
   }
 
+  static generateFieldsFromArray(array: string[]): any[] {
+    let fields: any[] = [];
+    array.forEach(x => {
+      fields = [...fields, generateFields[x]];
+    });
+    return fields;
+  }
+
+
 ngOnInit() {
 }
 
@@ -247,4 +257,5 @@ ngOnInit() {
 
   propChange = (_: any) => {
   }
+
 }
