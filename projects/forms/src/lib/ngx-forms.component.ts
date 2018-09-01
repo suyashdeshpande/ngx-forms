@@ -21,6 +21,7 @@ export class NgxFormsComponent implements OnChanges, ControlValueAccessor, OnIni
 
   constructor(private _ref: ChangeDetectorRef, public _service: NgxFormsService, private fb: FormBuilder) {
   }
+
   // form: FormGroup;
   Object = Object;
 
@@ -166,8 +167,8 @@ export class NgxFormsComponent implements OnChanges, ControlValueAccessor, OnIni
   }
 
 
-ngOnInit() {
-}
+  ngOnInit() {
+  }
 
   ngOnChanges() {
     // console.log('fields', this.fields);
@@ -226,13 +227,11 @@ ngOnInit() {
   }
 
   valueChanged(ev: any, field: FormField) {
-    if (field.type === 'date' || field.type === 'time') {
-      field.value = ev._i;
-    } else {
+    // console.log('value changed event', ev);
+    // console.log('form group', this.form);
+    if (field.type === 'select' || field.type === 'date') {
       field.value = ev;
     }
-    // console.log('value changed', controlName, ev);
-    // console.log('field is', field);
     this.propChange(this.fields);
     // this.fieldsChanged.emit(this.fields);
     this.fieldsChanged.emit(this.fields);
@@ -256,5 +255,5 @@ ngOnInit() {
   }
 
   propChange = (_: any) => {
-  }
+  };
 }

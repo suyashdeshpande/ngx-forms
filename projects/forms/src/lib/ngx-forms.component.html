@@ -29,7 +29,7 @@
               <ngx-select [placeholder]="field.placeholder || ''" [options]="field.options" [id]="field.id"
                           [canAdd]="field.canAdd" [prefix]="field.prefix" [suffix]="field.suffix"
                           [controlName]="field.name" [form]="form" [(ngModel)]="field.value"
-                          [ngModelOptions]="{standalone: true}"></ngx-select>
+                          [ngModelOptions]="{standalone: true}" (selectChange)="valueChanged($event, field)"></ngx-select>
 
             </ng-template>
 
@@ -39,6 +39,7 @@
               <ngx-multiple-select [placeholder]="field.placeholder || ''" [options]="field.options"
                                    [canAdd]="field.canAdd" [controlName]="field.name" [(ngModel)]="field.value"
                                    [ngModelOptions]="{standalone: true}" [id]="field.id" [form]="form"
+                                   (selectChange)="valueChanged($event, field)"
                                    ></ngx-multiple-select>
 
             </ng-template>
@@ -48,7 +49,7 @@
 
               <ngx-textarea [placeholder]="field.placeholder" [controlName]="field.name"
                             [id]="field.id" [form]="form"
-                            [(ngModel)]="field.value" [ngModelOptions]="{standalone: true}"></ngx-textarea>
+                            [(ngModel)]="field.value" [ngModelOptions]="{standalone: true}" (changeEmit)="valueChanged($event, field)"></ngx-textarea>
             </ng-template>
 
 
@@ -59,7 +60,8 @@
                   <ngx-checkbox [class]="'custom-control-input'" [value]="option.value" [id]="option.id"
                                 [controlName]="option.name" [checked]="option.checked"
                                 [labelClass]="'custom-control-label'"
-                                [label]="option.label" [form]="form" (changeEmit)="valueChanged($event, field)"></ngx-checkbox>
+                                [label]="option.label" [form]="form"
+                                (changeEmit)="valueChanged($event, field)"></ngx-checkbox>
                 </div>
               </ng-template>
             </ng-template>
@@ -70,12 +72,12 @@
                 <div class="custom-control custom-radio">
 
                   <input type="radio" class="custom-control-input" [value]="option.value" [id]="option.id"
-                         [formControlName]="field.name" (ngModelChange)="valueChanged($event, field)">
+                         [formControlName]="field.name" (input)="valueChanged($event, field)">
                   <label class="custom-control-label" [for]="option.id">{{ option.label }}</label>
 
-                  <!--<ngx-radio [form]="form" [controlName]="field.name" [value]="option.value" [id]="option.id"
-                             [class]="'custom-control-input'" [label]="option.label"
-                             [labelClass]="'custom-control-label'"></ngx-radio>-->
+                  <!--<ngx-radio [form]="form" [controlName]="field.name" [value]="option.value" [id]="option.id"-->
+                             <!--[class]="'custom-control-input'" [label]="option.label"-->
+                             <!--[labelClass]="'custom-control-label'" (changeEmit)="valueChanged($event, field)"></ngx-radio>-->
                 </div>
               </ng-template>
             </ng-template>
@@ -89,14 +91,15 @@
             <ng-template ngSwitchCase="time" [ngClass]="field.classNames || ''">
 
               <ngx-time [timeFormat]="'hh:mm a'" [controlName]="field.name" [id]="field.id" [(ngModel)]="field.value"
-                        [placeholder]="field.placeholder" [form]="form" [ngModelOptions]="{standalone: true}"></ngx-time>
+                        [placeholder]="field.placeholder" [form]="form" [ngModelOptions]="{standalone: true}"
+              (changeEmit)="valueChanged($event, field)"></ngx-time>
             </ng-template>
 
             <ng-template ngSwitchCase="password" [ngClass]="field.classNames || ''">
 
               <ngx-password [form]="form" [controlName]="field.name" [id]="field.id" [(ngModel)]="field.value"
                             [ngModelOptions]="{standalone: true}"
-                            [placeholder]="field.placeholder"></ngx-password>
+                            [placeholder]="field.placeholder" (changeEmit)="valueChanged($event, field)"></ngx-password>
             </ng-template>
 
 
@@ -104,6 +107,7 @@
 
               <ngx-input [id]="field.id" [placeholder]="field.placeholder || ''" [type]="field.type"
                          [controlName]="field.name" [form]="form" [(ngModel)]="field.value" [ngModelOptions]="{standalone: true}"
+                         (changeEmit)="valueChanged($event, field)"
                          ></ngx-input>
             </ng-template>
 
