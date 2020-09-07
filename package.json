@@ -35,7 +35,7 @@
     "moment": "^2.22.2",
     "ngx-custom-validators": "^6.0.5",
     "ngx-password-toggle": "^1.0.3",
-    "rxjs": "^6.0.0",
+    "rxjs": "^6.6.3",
     "timepicker": "^1.11.12",
     "zone.js": "^0.8.26"
   },
